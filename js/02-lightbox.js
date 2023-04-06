@@ -7,6 +7,9 @@ const galleryMarkup = galleryItems.reduce((acc, { preview, original, description
   return (acc += `<li class = "gallery__item"><a class = "gallery__link" href = ${original} ><img class = "gallery__image" alt = "${description}" src = ${preview}  loading="lazy"></a></li>`);
 }, '');
 
-console.log(galleryItems[0].description);
-
 galleryRef.insertAdjacentHTML('beforeend', galleryMarkup);
+
+var lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
