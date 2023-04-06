@@ -4,7 +4,7 @@ import { galleryItems } from './gallery-items.js';
 const galleryRef = document.querySelector('.gallery');
 
 const galleryMarkup = galleryItems.reduce((acc, { preview, original, description }) => {
-  return (acc += `<li class = "gallery__item"><a class = "gallery__link"><img class = "gallery__image" alt = ${description} src = ${preview} data-source = ${original} loading="lazy"></a></li>`);
+  return (acc += `<li class = "gallery__item"><a class = "gallery__link" href = ${original} ><img class = "gallery__image" alt = ${description} src = ${preview} data-source = ${original} loading="lazy"></a></li>`);
 }, '');
 
 let LightboxModalImg;
