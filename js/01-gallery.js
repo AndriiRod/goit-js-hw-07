@@ -22,6 +22,7 @@ function closeModalImg(e) {
 
 function openModalImg(e) {
   e.preventDefault();
+  if (e.target.nodeName !== 'IMG') return;
   LightboxModalImg = basicLightbox.create(`<img  src = ${e.target.dataset.source} >`);
   LightboxModalImg.show();
   document.addEventListener('keydown', closeModalImg);
