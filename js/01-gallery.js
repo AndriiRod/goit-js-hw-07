@@ -16,14 +16,34 @@ galleryRef.addEventListener('click', openModalImg);
 function closeModalImg(e) {
   if (e.code === 'Escape') {
     LightboxModalImg.close();
-    document.removeEventListener('keydown', closeModalImg);
   }
+}
+
+function createModalImg(e) {
+  LightboxModalImg = basicLightbox.create(`<img  src = ${e.target.dataset.source} >`, {
+    onShow: () => document.addEventListener('keydown', closeModalImg),
+    onClose: () => document.removeEventListener('keydown', closeModalImg),
+  });
 }
 
 function openModalImg(e) {
   e.preventDefault();
   if (e.target.nodeName !== 'IMG') return;
-  LightboxModalImg = basicLightbox.create(`<img  src = ${e.target.dataset.source} >`);
+  createModalImg(e);
   LightboxModalImg.show();
-  document.addEventListener('keydown', closeModalImg);
 }
+
+// function closeModalImg(e) {
+//   if (e.code === 'Escape') {
+//     LightboxModalImg.close();
+//     document.removeEventListener('keydown', closeModalImg);
+//   }
+// }
+
+// function openModalImg(e) {
+//   e.preventDefault();
+//   if (e.target.nodeName !== 'IMG') return;
+//   LightboxModalImg = basicLightbox.create(`<img  src = ${e.target.dataset.source} >`);
+//   LightboxModalImg.show();
+//   document.addEventListener('keydown', closeModalImg);
+// }
